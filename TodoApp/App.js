@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 import Heading from "./app/Heading";
+import Input from "./app/Input";
 
 class App extends Component {
   constructor() {
@@ -12,11 +13,16 @@ class App extends Component {
       type: "All"
     };
   }
+  inputChange(inputValue) {
+    console.log("Input Value", inputValue);
+    this.setState({ inputValue });
+  }
   render() {
     return (
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="always" style={styles.content}>
-          <Heading></Heading>
+          <Heading />
+          <Input></Input>
         </ScrollView>
       </View>
     );
