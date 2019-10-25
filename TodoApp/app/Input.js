@@ -1,9 +1,11 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const Input = () => (
+const Input = ({ inputValue, inputChange }) => (
   <View style={styles.inputContainer}>
     <TextInput
+      value={inputValue}
+      onChangeText={inputChange}
       style={styles.input}
       placeholder="What needs to be done?"
       placeholderTextColor="#CACACA"
@@ -16,9 +18,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginLeft: 20,
     marginRight: 20,
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.3,
     shadowColor: "#000000",
-    shadowOffset: { width: 2, height: 2 }
+    shadowOffset: { width: 3, height: 2 }
   },
   input: {
     height: 60,

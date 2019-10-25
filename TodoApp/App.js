@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import Heading from "./app/Heading";
 import Input from "./app/Input";
 
+let todoIndex = 0;
 class App extends Component {
   constructor() {
     super();
@@ -13,16 +14,36 @@ class App extends Component {
       type: "All"
     };
   }
+
+  submitTodo() {
+    if (this.state.inputValue.matchh(/^\s*$/)) {
+      return;
+    }
+
+    const todo = {
+      title: this.state.inputValue,
+      todoIndex,
+      complete: false
+    };
+    todoIndex++;
+    const todos = [...this.state.todos, todo];
+    this.setState({ todos, inputValue: "" }, () => {
+      console.log("State: ", this.state);
+    });
+  }
   inputChange(inputValue) {
-    console.log("Input Value", inputValue);
     this.setState({ inputValue });
   }
   render() {
+    const { inputValue } = this.state;
     return (
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="always" style={styles.content}>
           <Heading />
-          <Input></Input>
+          <Input
+            inputValue={inputValue}
+            inputChange={text => this.inputChange(text)}
+          ></Input>
         </ScrollView>
       </View>
     );
