@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   submitTodo() {
-    if (this.state.inputValue.matchh(/^\s*$/)) {
+    if (this.state.inputValue.match(/^\s*$/)) {
       return;
     }
 
