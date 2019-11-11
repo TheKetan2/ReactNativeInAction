@@ -32,7 +32,7 @@ export default class Cities extends React.Component {
     return (
       <ScrollView contentContainerStyle={[!cities.length && { flex: 1 }]}>
         <View style={[!cities.length && { justifyContent: "center", flex: 1 }]}>
-          {!cities.length && <CenterMessage message="No saved cities" />}
+          {!cities.length && <CenterMessage message="No saved cities!" />}
           {cities.map((item, index) => (
             <TouchableWithoutFeedback
               onPress={() => this.navigate(item)}
