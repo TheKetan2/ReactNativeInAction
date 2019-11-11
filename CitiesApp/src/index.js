@@ -1,16 +1,14 @@
 import React from "react";
 
-import { Cities } from "./Cities/Cities";
-import { City } from "./Cities/City";
+import Cities from "./Cities/Cities";
+import City from "./Cities/City";
 import AddCity from "./AddCity/AddCity";
 
 import { colors } from "./theme";
 
-import {
-  createAppContainer,
-  createStackNavigator,
-  createBottomNavigator
-} from "react-navigation";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
 const options = {
   navigationOptions: {
@@ -20,15 +18,22 @@ const options = {
     headerTintColor: "#fff"
   }
 };
+
 const CitiesNav = createStackNavigator(
   {
     Cities: { screen: Cities },
-    City: { screen: City }
+    City: { screen: City },
+    AddCity: { screen: AddCity }
   },
-  options
+  {
+    initialRouteName: "AddCity",
+    defaultNavigationOptions: {
+      title: "App"
+    }
+  }
 );
 
-const Tabs = createBottomNavigator({
+const Tabs = createBottomTabNavigator({
   Cities: { screen: CitiesNav },
   AddCity: { screen: AddCity }
 });
