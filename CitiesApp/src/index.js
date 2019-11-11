@@ -25,12 +25,7 @@ const CitiesNav = createStackNavigator(
     City: { screen: City },
     AddCity: { screen: AddCity }
   },
-  {
-    initialRouteName: "AddCity",
-    defaultNavigationOptions: {
-      title: "App"
-    }
-  }
+  options
 );
 
 const Tabs = createBottomTabNavigator({

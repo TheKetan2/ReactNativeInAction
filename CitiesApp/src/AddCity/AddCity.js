@@ -58,7 +58,7 @@ export default class AddCity extends React.Component {
           placeholder="Country name"
           onChangeText={val => this.onChangeText("country", val)}
           style={styles.input}
-          value={this.state.city}
+          value={this.state.country}
         />
 
         <TouchableOpacity onPress={this.shubmit}>
