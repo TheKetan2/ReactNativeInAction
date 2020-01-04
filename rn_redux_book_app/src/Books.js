@@ -1,14 +1,37 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity
+} from "react-native";
 
 import { connect } from "react-redux";
 
+const initialState = {
+  name: "",
+  author: ""
+};
 class Books extends React.Component {
+  state = initialState;
+
+  updateInput = (key, value) => {
+    this.setState({ ...this.state, [key]: value });
+  };
+
+  addBook = () => {
+    this.props.dispatchAddBook(this.state);
+    this.setState({ initialState });
+  };
+
   render() {
     const { books } = this.props;
 
     return (
       <View style={styles.container}>
+        <View style={styles.in}></View>
         <Text style={styles.title}>Books</Text>
         <ScrollView
           keyboardShouldPersistTaps="always"
@@ -27,6 +50,30 @@ class Books extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    padding: 10,
+    backgroundColor: "#ffffff",
+    borderTopColor: "#ededed",
+    borderTopWidth: 1,
+    flexDirection: "row",
+    height: 100
+  },
+  inputWrapper: {
+    flex: 1
+  },
+  input: {
+    height: 44,
+    padding: 7,
+    backgroundColor: "#ededed",
+    borderColor: 1,
+    borderRadius: 10,
+    flex: 1,
+    marginBottom: 5
+  },
+  addButton: {
+    fontSize: 28,
+    lineHeight: 28
+  },
   container: {
     flex: 1
   },
@@ -57,4 +104,8 @@ const mapStateToProps = state => ({
   books: state.bookReducer.books
 });
 
-export default connect(mapStateToProps)(Books);
+const mapDispatchToProps = {
+  dispatchAddBook: book => addBook(book)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Books);
