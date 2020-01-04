@@ -10,4 +10,4 @@
 
 # Screencast:
 
-![alt text](assets/screen.mp4)
+![alt text](assets/screen.gif)
