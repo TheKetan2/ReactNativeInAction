@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { toUnicode } from "punycode";
 
 const Todo = ({ todo }) => (
   <View style={styles.todoContainer}>
