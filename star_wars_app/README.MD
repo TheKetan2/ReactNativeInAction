@@ -7,6 +7,7 @@
 - use of FlatList
 - use of Activity Indicator
 - React Navigation
+- not yet finished
 
 # Screencast:
 
